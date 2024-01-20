@@ -10,12 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include "constants.h"
+#include "utilities.h"
 
-int	solve(int **board)
+int	solve(int board[SIZE][SIZE])
 {
 	return (1);
 }

@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include "constants.h"
+#include "utilities.h"
 
 int	**board_create(void)
 {
