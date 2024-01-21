@@ -13,12 +13,13 @@
 #include "utilities.h"
 
 int	**board_create(void);
-int	solve(int board[SIZE][SIZE]);
+int	solve(int board[g_size][g_size]);
 
 int	main(int argc, char *argv[])
 {
 	int	**board;
 
+	g_size = 0;
 	board = board_create();
 	return (0);
 }

@@ -13,9 +13,9 @@
 #ifndef UTILITIES_H
 # define UTILITIES_H    
 
-# define SIZE 4
-# define ZERO 48
 # include <stdlib.h>
 # include <unistd.h>
+
+extern int	g_size;
 
 #endif

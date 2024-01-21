@@ -16,18 +16,19 @@ int	**board_create(void)
 {
 	int	**board;
 	int	i;
+	int	j;
 
 	i = 0;
-	board = (int **) malloc (SIZE * sizeof (int *));
-	while (i != SIZE)
+	board = (int **) malloc (g_size * sizeof (int *));
+	while (i != g_size)
 	{
-		board[i] = (int *) malloc (SIZE * sizeof (int));
+		board[i] = (int *) malloc (g_size * sizeof (int));
+		j = 0;
+		while (j != g_size)
+		{
+			board[i][j] = 0;
+		}
 		i++;
-	}
-	i = 0;
-	while (i != (SIZE * SIZE - 1))
-	{
-		board[i] = 0;
 	}
 	return (board);
 }
@@ -41,13 +42,13 @@ void	board_print(int **board)
 	row = 0;
 	col = 0;
 	num = 0;
-	while (row != SIZE)
+	while (row != g_size)
 	{
-		while (col != SIZE)
+		while (col != g_size)
 		{
 			if (col != 0)
 				write(1, " ", 1);
-			num = board[row][col] + ZERO;
+			num = board[row][col] + '0';
 			write(1, &num, 1);
 		}
 		write(1, "\n", 1);
