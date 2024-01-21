@@ -12,10 +12,10 @@
 
 #include "utilities.h"
 
-int	check_up(int board[g_size][g_size], int col, int *row_up)
+int	check_up(int **board, int col, int *row_up)
 {
-	int	i;
 	int	view;
+	int	i;
 
 	i = 1;
 	view = 1;
@@ -31,8 +31,8 @@ int	check_up(int board[g_size][g_size], int col, int *row_up)
 
 int	check_down(int board[g_size][g_size], int col, int *row_down)
 {
-	int	i;
 	int	view;
+	int	i;
 
 	i = g_size;
 	view = 1;
@@ -48,8 +48,8 @@ int	check_down(int board[g_size][g_size], int col, int *row_down)
 
 int	check_left(int board[g_size][g_size], int row, int *col_left)
 {
-	int	i;
 	int	view;
+	int	i;
 
 	i = 1;
 	view = 1;
@@ -63,10 +63,10 @@ int	check_left(int board[g_size][g_size], int row, int *col_left)
 	return (1);
 }
 
-int	check_right(int board[g_size][g_size], int row, int *col_down)
+int	check_right(int board[g_size][g_size], int row, int *col_right)
 {
-	int	i;
 	int	view;
+	int	i;
 
 	i = g_size;
 	view = 1;
@@ -74,8 +74,20 @@ int	check_right(int board[g_size][g_size], int row, int *col_down)
 	{
 		if (board[row][i] < board[row][i - 1])
 			view += 1;
-		if (view > row_right[row])
+		if (view > col_right[row])
 			return (0);
 	}
 	return (1);
+}
+
+int	check_visibility(int **board, int row, int col, int **border)
+{
+	int visible;
+
+	visible = 1;
+	visible *= check_up(board, col, border[0]);
+	visible *= check_down(board, col, border[1]);
+	visible *= check_left(board, row, border[2]);
+	visible *= check_right(board, row, border[3]);
+	return (visible);
 }

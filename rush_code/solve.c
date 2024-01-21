@@ -12,10 +12,7 @@
 
 #include "utilities.h"
 
-int	check_up(int board[g_size][g_size]);
-int	check_down(int board[g_size][g_size]);
-int	check_left(int board[g_size][g_size]);
-int	check_right(int board[g_size][g_size]);
+int	check_visibility(int **board, int row, int col, int **border);
 
 int	find_empty_cell(int board[g_size][g_size], int *row, int *col)
 {
@@ -39,24 +36,16 @@ int	find_empty_cell(int board[g_size][g_size], int *row, int *col)
 	return (0);
 }
 
-int	is_valid(int board[g_size][g_size], int row, int col, int num)
+int	is_valid(int board[g_size][g_size], int row, int col, int **border)
 {
-	int	i;
-
-	i = 0;
-	while (i < g_size)
-	{
-		if (board[row][i] == num || board[i][col] == num)
-			return (0);
-	}
-	if (!check_visibility(board, row, col, num))
+	if (!check_visibility(board, row, col, border))
 	{
 		return (0);
 	}
 	return (1);
 }
 
-int	solve(int board[g_size][g_size])
+int	solve(int **board)
 {
 	int	row;
 	int	col;
@@ -78,5 +67,5 @@ int	solve(int board[g_size][g_size])
 		board[row][col] = 0;
 		num++;
 	}
-	return (1);
+	return (0);
 }

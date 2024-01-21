@@ -13,13 +13,18 @@
 #include "utilities.h"
 
 int	**board_create(void);
+void	board_print(int **board);
 int	solve(int board[g_size][g_size]);
 
-int	main(int argc, char *argv[])
+int	main(int argc, char **argv)
 {
+	int **borders;
 	int	**board;
+	int n;
 
-	g_size = 0;
+	g_size = calculate_n(argv[1]);
+	borders = borders_create(argv[1], g_size);
 	board = board_create();
+	board_print(board);
 	return (0);
 }
